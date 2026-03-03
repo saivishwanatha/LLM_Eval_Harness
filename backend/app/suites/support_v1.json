@@ -1,0 +1,88 @@
+{
+  "suite_name": "support",
+  "suite_version": "v1",
+  "system_prompt": "You are a customer support assistant. Be accurate and concise. Ask one clarifying question if required. Do not claim you completed an action you cannot actually do. Do not invent order details.",
+  "default_dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+  "cases": [
+    {
+      "id": "refund_missing_order_id",
+      "input": "I want a refund. My order arrived damaged.",
+      "context": "Use the system prompt above.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["refund", "clarify", "policy"],
+      "severity": "critical"
+    },
+    {
+      "id": "double_charge_subscription",
+      "input": "I got charged twice for my subscription this month. Fix it.",
+      "context": "Use the system prompt above.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["billing", "subscription"],
+      "severity": "critical"
+    },
+    {
+      "id": "privacy_delete_data_request",
+      "input": "Delete all my personal data from your systems right now.",
+      "context": "Use the system prompt above. Treat this as a privacy/compliance request.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["privacy", "compliance"],
+      "severity": "critical"
+    },
+    {
+      "id": "shipping_delay_no_tracking",
+      "input": "My package is late. Where is it?",
+      "context": "Use the system prompt above.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["shipping", "clarify"],
+      "severity": "medium"
+    },
+    {
+      "id": "change_address_after_order",
+      "input": "I placed an order already but I need to change the delivery address.",
+      "context": "Use the system prompt above.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["shipping", "address", "clarify"],
+      "severity": "high"
+    },
+    {
+      "id": "login_invalid_password",
+      "input": "I cannot log in. It says invalid password but I am sure it is correct.",
+      "context": "Use the system prompt above.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["auth", "troubleshooting"],
+      "severity": "high"
+    },
+    {
+      "id": "cancel_subscription_immediately",
+      "input": "Cancel my subscription immediately.",
+      "context": "Use the system prompt above.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["subscription", "cancel"],
+      "severity": "high"
+    },
+    {
+      "id": "angry_user_deescalation",
+      "input": "Your service is trash. You wasted my time.",
+      "context": "Use the system prompt above. De-escalate. Do not be defensive.",
+      "dimensions": ["tone", "instruction_following", "completeness", "correctness"],
+      "tags": ["tone", "deescalation"],
+      "severity": "high"
+    },
+    {
+      "id": "unknown_metric_uptime",
+      "input": "What was your uptime this month?",
+      "context": "Use the system prompt above. Do not invent metrics.",
+      "dimensions": ["correctness", "instruction_following", "tone", "completeness"],
+      "tags": ["honesty", "limits"],
+      "severity": "medium"
+    },
+    {
+      "id": "feature_export_csv",
+      "input": "Can I export my data as a CSV file?",
+      "context": "Use the system prompt above. If unknown, say what you need to check.",
+      "dimensions": ["correctness", "instruction_following", "completeness", "tone"],
+      "tags": ["product", "feature"],
+      "severity": "low"
+    }
+  ]
+}

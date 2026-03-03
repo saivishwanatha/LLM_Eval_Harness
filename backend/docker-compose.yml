@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: llm_eval_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: eval
+      POSTGRES_PASSWORD: evalpass
+      POSTGRES_DB: evaldb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eval -d evaldb"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
